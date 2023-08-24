@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Article</title>
+    <title>Edit Article</title>
 </head>
 <body>
-    <h1>Create a New Article</h1>
+    <h1>Edit Article</h1>
 
     <% if @article.errors.any? %>
         <span>The following errors prevented the article from being saved</span>
@@ -15,7 +15,8 @@
         <% end %>
     <% end %>
 
-    <%= form_with scope: :article, url: articles_path, local: true do |f| %>
+    <!--Specifying model as the instance variable lets rails know to render specific article-->
+    <%= form_with(model: @article, local: true) do |f| %>
 
     <p>
         <%= f.label :title %>

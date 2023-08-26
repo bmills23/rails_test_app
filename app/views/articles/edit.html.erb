@@ -8,30 +8,11 @@
 <body>
     <h1>Edit Article</h1>
 
-    <% if @article.errors.any? %>
-        <span>The following errors prevented the article from being saved</span>
-        <% @article.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    <% end %>
+    <%= render 'errors' %>
 
-    <!--Specifying model as the instance variable lets rails know to render specific article-->
-    <%= form_with(model: @article, local: true) do |f| %>
+    <%= render 'form' %>
 
-    <p>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </p>
-
-    <p>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-    </p>
-
-    <p>
-        <%= f.submit %>
-    </p>
-    <% end %>
+    <%= link_to 'Cancel and return to articles listing', articles_path %>
 
 </body>
 
